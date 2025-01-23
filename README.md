@@ -36,11 +36,11 @@ console.log(result);
 import { Yvalidator } from "yuca-validator";
 
 const userSchema = Yvalidator.object({
-  name: Yvalidator.string().addValidator(Yvalidator.minLength(3)),
+  name: Yvalidator.string().minLength(3),
   email: Yvalidator.email(),
   address: Yvalidator.object({
     city: Yvalidator.string(),
-    zip: Yvalidator.string().addValidator(Yvalidator.minLength(5)),
+    zip: Yvalidator.string().minLength(5),
   }),
 });
 
@@ -56,8 +56,7 @@ const result = userSchema.validate({
 console.log(result); // { success: true, data: { ... } }
 ```
 
-4. **API**: 
-SchemaFactory
+4. **API**: SchemaFactory
 
 - string(): Crea un esquema para validar cadenas.
 
