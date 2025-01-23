@@ -10,7 +10,7 @@ Puedes instalar yuca-validator usando npm:
 npm install yuca-validator
 ```
 
-3. **Uso Básico**:
+**Uso Básico**:
 
 ```javascript
 import { Yvalidator } from "yuca-validator";
@@ -55,8 +55,7 @@ const result = userSchema.validate({
 
 console.log(result); // { success: true, data: { ... } }
 ```
-
-4. **API**: SchemaFactory
+**API**: SchemaFactory
 
 - string(): Crea un esquema para validar cadenas.
 
@@ -70,6 +69,7 @@ Schema
 
 - validate(data: any): Valida los datos proporcionados y devuelve un objeto con el resultado.
 
-5. **Contribuir**: ¡Las contribuciones son bienvenidas! Si encuentras un error o tienes una sugerencia, por favor abre un issue o envía un pull request.
-6. **Licencia**:
+ **Contribuir**: 
+ ¡Las contribuciones son bienvenidas! Si encuentras un error o tienes una sugerencia, por favor abre un issue o envía un pull request.
+**Licencia**:
    - Indica que el proyecto está bajo la MIT License y enlaza al archivo `LICENSE`.
