@@ -70,6 +70,9 @@ Schema
 - validate(data: any): Valida los datos proporcionados y devuelve un objeto con el resultado.
 
  **Contribuir**: 
+ 
  ¡Las contribuciones son bienvenidas! Si encuentras un error o tienes una sugerencia, por favor abre un issue o envía un pull request.
+ 
 **Licencia**:
-   - Indica que el proyecto está bajo la MIT License y enlaza al archivo `LICENSE`.
+
+Indica que el proyecto está bajo la MIT License y enlaza al archivo `LICENSE`.
