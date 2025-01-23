@@ -22,8 +22,7 @@ describe('YucaValidator', () => {
 
   describe('minLength()', () => {
     it('should create a validator that checks minimum length', () => {
-      const minLengthValidator = Yvalidator.minLength(3);
-      const schema = Yvalidator.string().addValidator(minLengthValidator);
+      const schema = Yvalidator.string().minLength(3);;
 
       expect(schema.validate('abc').success).toBe(true); // Longitud válida
       expect(schema.validate('ab').success).toBe(false); // Longitud inválida
@@ -33,11 +32,11 @@ describe('YucaValidator', () => {
  describe('object()', () => {
     it('should create a schema that validates nested objects', () => {
       const userSchema = Yvalidator.object({
-        name: Yvalidator.string().addValidator(Yvalidator.minLength(3)),
+        name: Yvalidator.string().minLength(3),
         email: Yvalidator.email(),
         address: Yvalidator.object({
           city: Yvalidator.string(),
-          zip: Yvalidator.string().addValidator(Yvalidator.minLength(5)),
+          zip: Yvalidator.string().minLength(5),
         }),
       });
 
@@ -75,5 +74,39 @@ describe('YucaValidator', () => {
       });
     });
   });
+
+
+
+  describe('Yvalidator Dates', () => {
+    it('should validate dates', () => {
+      const schema = Yvalidator.date();
+      expect(schema.validate('2023-10-01').success).toBe(true);
+      expect(schema.validate('invalid-date').success).toBe(false);
+    });
+  
+    it('should validate future dates', () => {
+      const futureDate = new Date();
+      futureDate.setFullYear(futureDate.getFullYear() + 1); // Fecha futura
+      const schema = Yvalidator.date({ isFuture: true });
+      expect(schema.validate(futureDate.toISOString()).success).toBe(true);
+  
+      const pastDate = new Date();
+      pastDate.setFullYear(pastDate.getFullYear() - 1); // Fecha pasada
+      expect(schema.validate(pastDate.toISOString()).success).toBe(false);
+    });
+  
+    it('should validate past dates', () => {
+      const pastDate = new Date();
+      pastDate.setFullYear(pastDate.getFullYear() - 1); // Fecha pasada
+      const schema = Yvalidator.date({ isPast: true });
+      expect(schema.validate(pastDate.toISOString()).success).toBe(true);
+  
+      const futureDate = new Date();
+      futureDate.setFullYear(futureDate.getFullYear() + 1); // Fecha futura
+      expect(schema.validate(futureDate.toISOString()).success).toBe(false);
+    });
+  });
+  
  
 });
+ 
