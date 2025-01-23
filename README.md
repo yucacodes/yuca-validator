@@ -75,4 +75,4 @@ Schema
  
 **Licencia**:
 
-Indica que el proyecto está bajo la MIT License y enlaza al archivo `LICENSE`.
+ MIT License `LICENSE`.
